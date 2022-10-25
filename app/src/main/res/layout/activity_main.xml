@@ -4,15 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/astraea_background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/registerbutton"
+            android:layout_width="256dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#C9FD6EBA"
+            android:elevation="20dp"
+            android:text="@string/register_button_text"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_password" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="256dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginBottom="53dp"
+            android:backgroundTint="#FDCD69"
+            android:elevation="20dp"
+            android:text="@string/login_button_text"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/registerbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/login_password" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="389dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="44dp"
+            android:contentDescription="@string/image_desc_name"
+            app:layout_constraintBottom_toTopOf="@+id/login_email_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/astraea_logo" />
+
+        <EditText
+            android:id="@+id/text_mail"
+            android:layout_width="223dp"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="E-mail"
+            android:textColor="#FE6556"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/login_email_address"
+            android:layout_width="223dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:elevation="15dp"
+            android:ems="10"
+            android:hint="@string/mail"
+            android:inputType="textEmailAddress"
+            android:textColor="#050505"
+            app:layout_constraintBottom_toTopOf="@+id/text_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="223dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/rounded_corner"
+            android:elevation="15dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_password" />
+
+        <EditText
+            android:id="@+id/text_password"
+            android:layout_width="224dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="101dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Password"
+            android:textColor="#FE6556"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/registerbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_email_address" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
