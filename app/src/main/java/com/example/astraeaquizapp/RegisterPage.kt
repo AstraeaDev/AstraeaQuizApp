@@ -29,7 +29,7 @@ class RegisterPage : AppCompatActivity() {
             if(email.isNotEmpty() && password.isNotEmpty()){
                 fireBaseAuth.createUserWithEmailAndPassword(email , password).addOnCompleteListener(){
                     if(it.isSuccessful){
-                        val intent = Intent(this,MainPage::class.java)
+                        val intent = Intent(this,SignIn::class.java)
                         startActivity(intent)
                     }
                     else{
@@ -64,4 +64,3 @@ class RegisterPage : AppCompatActivity() {
 
         }
     }
-}
