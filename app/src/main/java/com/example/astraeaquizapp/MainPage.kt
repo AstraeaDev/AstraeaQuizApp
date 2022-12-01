@@ -1,12 +1,10 @@
 package com.example.astraeaquizapp
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 
 class MainPage : AppCompatActivity() {
 
@@ -31,7 +29,11 @@ class MainPage : AppCompatActivity() {
             Toast.makeText(this@MainPage, "Seçilen meyve: $secilenMeyve", Toast.LENGTH_SHORT).show()
         }
 
-
+        val buttonClickForQuiz = findViewById<Button>(R.id.button)
+        buttonClickForQuiz.setOnClickListener {
+            val intent = Intent(this, QuizActivity::class.java )
+            startActivity(intent)
+        }
 
     }
 
