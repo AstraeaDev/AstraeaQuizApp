@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="astraea_button1">#FDCD69</color>
+    <color name="astraea_button2">#C9FD6EBA</color>
+    <color name="astraea_fon_color1">#FE6556</color>
+    <color name="astraea_background">#6FF3C872</color>
+    <color name="astraea_bg2">#ADCC9DFE</color>
+
 </resources>
