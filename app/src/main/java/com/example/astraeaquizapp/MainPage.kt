@@ -29,7 +29,8 @@ class MainPage : AppCompatActivity() {
             Toast.makeText(this@MainPage, "Seçilen meyve: $secilenMeyve", Toast.LENGTH_SHORT).show()
         }
 
-        val buttonClickForQuiz = findViewById<Button>(R.id.button)
+
+        val buttonClickForQuiz = findViewById<Button>(R.id.takeQuizButton)
         buttonClickForQuiz.setOnClickListener {
             val intent = Intent(this, QuizActivity::class.java )
             startActivity(intent)
