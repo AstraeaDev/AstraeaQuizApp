@@ -4,18 +4,40 @@ package com.example.astraeaquizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 
 class MainPage : AppCompatActivity() {
+
+    var englishList = ArrayList<String>()
+    var turkishList = ArrayList<String>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
 
+        // open an sqlite database
+        val db = openOrCreateDatabase("quizbook", MODE_PRIVATE, null)
+        db.execSQL("CREATE TABLE IF NOT EXISTS book (id INTEGER PRIMARY KEY, genreID INTEGER, english VARCHAR, turkish VARCHAR)")
+
+        // insert some data
+        // db.execSQL("INSERT INTO book (genreID, english, turkish) VALUES (1, 'White', 'Beyaz')")
+
+        // get data from database
+        val cursor = db.rawQuery("SELECT * FROM book", null)
+        val englishIndex = cursor.getColumnIndex("english")
+        val turkishIndex = cursor.getColumnIndex("turkish")
+
+        while (cursor.moveToNext()) {
+            englishList.add(cursor.getString(englishIndex))
+            turkishList.add(cursor.getString(turkishIndex))
+        }
+
+
         val meyveler = listOf("Elma", "Armut", "Muz", "Kivi", "Çilek", "Karpuz", "Kavun", "Ananas", "Kiraz", "Dut")
 
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, meyveler)
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, englishList)
         val myList = findViewById<ListView>(R.id.words_list)
 
         myList.adapter = adapter
