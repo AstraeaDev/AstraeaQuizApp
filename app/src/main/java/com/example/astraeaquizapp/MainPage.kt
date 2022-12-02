@@ -34,6 +34,8 @@ class MainPage : AppCompatActivity() {
             turkishList.add(cursor.getString(turkishIndex))
         }
 
+        val map: Map<String, String> = englishList.zip(turkishList).toMap() // creates a dict
+
 
         val meyveler = listOf("Elma", "Armut", "Muz", "Kivi", "Çilek", "Karpuz", "Kavun", "Ananas", "Kiraz", "Dut")
 
@@ -46,7 +48,7 @@ class MainPage : AppCompatActivity() {
 
             val secilenMeyve = parent.getItemAtPosition(position) as String
 
-            CustomDialogClass(this, secilenMeyve).show()
+            CustomDialogClass(this, secilenMeyve, map).show()
 
             Toast.makeText(this@MainPage, "Seçilen meyve: $secilenMeyve", Toast.LENGTH_SHORT).show()
         }

@@ -8,7 +8,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 
-class CustomDialogClass(context: Context, private var chosenWord: String) : Dialog(context) {
+class CustomDialogClass(context: Context, private var chosenWord: String, private var dict: Map<String, String>) : Dialog(context) {
 
     init {
         setCancelable(false)
@@ -22,7 +22,7 @@ class CustomDialogClass(context: Context, private var chosenWord: String) : Dial
         tvTitle.setText(chosenWord)
 
         var tvBody = findViewById<TextView>(R.id.tvBody)
-        tvBody.setText("the word you chose is $chosenWord")
+        tvBody.setText("The meaning of $chosenWord is ${dict[chosenWord]}")
 
         val buttonClick = findViewById<Button>(R.id.ok_button)
         buttonClick.setOnClickListener {
