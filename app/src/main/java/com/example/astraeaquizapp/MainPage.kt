@@ -24,7 +24,7 @@ class MainPage : AppCompatActivity() {
 
             val secilenMeyve = parent.getItemAtPosition(position) as String
 
-            CustomDialogClass(this).show()
+            CustomDialogClass(this, secilenMeyve).show()
 
             Toast.makeText(this@MainPage, "Seçilen meyve: $secilenMeyve", Toast.LENGTH_SHORT).show()
         }
