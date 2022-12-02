@@ -45,7 +45,7 @@
         android:layout_marginTop="42dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="3dp"
-        android:text="WORD MEANING IN A VERY LONG TEXT LIKE REAAAAAAAALY LONG TEXT"
+        android:text="The word you clicked is: "
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/ok_button"
         app:layout_constraintEnd_toEndOf="parent"

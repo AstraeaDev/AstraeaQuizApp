@@ -19,9 +19,7 @@ class CustomDialogClass(context: Context) : Dialog(context) {
 
         val buttonClick = findViewById<Button>(R.id.ok_button)
         buttonClick.setOnClickListener {
-
-
-
+            dismiss()
         }
 
     }
