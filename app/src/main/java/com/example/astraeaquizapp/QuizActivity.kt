@@ -3,7 +3,6 @@ package com.example.astraeaquizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.RadioButton
 import android.widget.TextView
 
@@ -15,7 +14,7 @@ class QuizActivity : AppCompatActivity() {
         // create an intent
         val intent = Intent(this, QuizActivity::class.java)
         // val map: Map<String, String> = intent.getSerializableExtra("map") as Map<String, String>
-        val deneme = getIntent().getStringExtra("question")
+        val question = getIntent().getStringExtra("question")
         val answerString1 = getIntent().getStringExtra("answer1")
         val answerString2 = getIntent().getStringExtra("answer2")
         val answerString3 = getIntent().getStringExtra("answer3")
@@ -32,7 +31,7 @@ class QuizActivity : AppCompatActivity() {
         val answer3 = findViewById<RadioButton>(R.id.radioButton3)
         val answer4 = findViewById<RadioButton>(R.id.radioButton4)
 
-        tvQuestion.setText(deneme)
+        tvQuestion.setText("What is the meaning of $question?")
         answer1.setText(answers.get(0))
         answer2.setText(answers.get(1))
         answer3.setText(answers.get(2))
