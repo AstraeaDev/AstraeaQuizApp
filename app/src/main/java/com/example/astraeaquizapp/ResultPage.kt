@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class RegisterPage : AppCompatActivity() {
+class ResultPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_page)
+        setContentView(R.layout.activity_result_page)
 
-        val buttonClick = findViewById<Button>(R.id.register_button)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        val buttonClickForMainPage = findViewById<Button>(R.id.resultButton)
+        buttonClickForMainPage.setOnClickListener {
+            val intent = Intent(this, MainPage::class.java )
             startActivity(intent)
         }
+
     }
 }
