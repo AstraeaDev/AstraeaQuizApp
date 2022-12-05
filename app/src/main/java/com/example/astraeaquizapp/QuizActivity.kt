@@ -11,8 +11,6 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        // create an intent
-        val intent = Intent(this, QuizActivity::class.java)
         // val map: Map<String, String> = intent.getSerializableExtra("map") as Map<String, String>
         val question = getIntent().getStringExtra("question")
         val answerString1 = getIntent().getStringExtra("answer1")
