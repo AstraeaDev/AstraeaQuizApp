@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 
 class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +24,6 @@ class QuizActivity : AppCompatActivity() {
         answers = answers.shuffled()
 
 
-
         val tvQuestion = findViewById<TextView>(R.id.tvQuestion)
         val answer1 = findViewById<RadioButton>(R.id.radioButton)
         val answer2 = findViewById<RadioButton>(R.id.radioButton2)
@@ -34,6 +35,28 @@ class QuizActivity : AppCompatActivity() {
         answer2.setText(answers.get(1))
         answer3.setText(answers.get(2))
         answer4.setText(answers.get(3))
+
+        // val choices = findViewById<RadioGroup>(R.id.choices)
+//
+        // choices.setOnCheckedChangeListener(
+        //     RadioGroup.OnCheckedChangeListener { _, checkedId ->
+        //         val radio: RadioButton = findViewById(checkedId)
+        //         if (radio.text == correctAnswer) {
+        //             val intent = Intent(this, QuizActivity::class.java)
+        //             startActivity(intent)
+        //             Toast.makeText(applicationContext,"Correct Answer!:"+
+        //                     " ${radio.text}",
+        //                 Toast.LENGTH_SHORT).show()
+        //         } else {
+        //             val intent = Intent(this, QuizActivity::class.java)
+        //             startActivity(intent)
+        //             Toast.makeText(applicationContext,"Wrong Answer!:"+
+        //                     " ${radio.text}",
+        //                 Toast.LENGTH_SHORT).show()
+        //         }
+        //     }
+//
+        // )
 
     }
 }
