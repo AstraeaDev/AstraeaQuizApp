@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593407311895",
+    "project_id": "astraeaquizapp",
+    "storage_bucket": "astraeaquizapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593407311895:android:12b6f29499cdda45ed5c52",
+        "android_client_info": {
+          "package_name": "com.example.astraeaquizapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593407311895-lotbja70sabefau7op4o2flgg41bu8gv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdnGboHcmQR30vtRQCS1peny6MxmKhmHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593407311895-lotbja70sabefau7op4o2flgg41bu8gv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
