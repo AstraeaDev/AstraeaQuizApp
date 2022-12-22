@@ -1,11 +1,19 @@
 package com.example.astraeaquizapp
 
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.TaskStackBuilder
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 
 class MainPage : AppCompatActivity() {
 
@@ -13,6 +21,10 @@ class MainPage : AppCompatActivity() {
     var turkishList = ArrayList<String>()
     var map = mapOf<String, String>()
     var chosenWord = ""
+
+    val CHANNEL_ID = "channelID"
+    val CHANNEL_NAME = "channelName"
+    val NOTIF_ID = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -180,6 +192,24 @@ class MainPage : AppCompatActivity() {
                 turkishOfFourthElement = cursor4.getString(turkishIndex4)
             }
 
+            createNotifChannel()
+            val intentNotification=Intent(this,MainPage::class.java)
+            val pendingIntent = TaskStackBuilder.create(this).run {
+                addNextIntentWithParentStack(intent)
+                getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+            }
+
+            val notif = NotificationCompat.Builder(this,CHANNEL_ID)
+                .setContentTitle("Brave Step!")
+                .setContentText("Keep solving quizzes and get better!")
+                .setSmallIcon(R.drawable.astraea_logo)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .build()
+
+            val notifManger = NotificationManagerCompat.from(this)
+            notifManger.notify(NOTIF_ID,notif)
+
             intent.putExtra("question", shuffledEnglishList[0])
             intent.putExtra("answer1", turkishOfFourthElement)
             intent.putExtra("answer2", turkishOfSecondElement)
@@ -189,6 +219,15 @@ class MainPage : AppCompatActivity() {
         }
 
     }
-
+    private fun createNotifChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT).apply {
+                lightColor = Color.BLUE
+                enableLights(true)
+            }
+            val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+    }
 
 }
