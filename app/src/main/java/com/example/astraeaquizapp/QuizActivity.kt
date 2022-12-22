@@ -118,11 +118,11 @@ class QuizActivity : AppCompatActivity() {
 
 
 
-        tvQuestion.setText("Sorularınız bu alanda gözükecektir?")
-        answer1.setText("1.Cevap")
-        answer2.setText("2.Cevap")
-        answer3.setText("3.Cevap")
-        answer4.setText("4.Cevap")
+        tvQuestion.setText("Your questions will be appeared in here")
+        answer1.setText("Answer 1")
+        answer2.setText("Answer 2")
+        answer3.setText("Answer 3")
+        answer4.setText("Answer 4")
 
 
 
@@ -228,7 +228,7 @@ class QuizActivity : AppCompatActivity() {
                 answer3.visibility = View.GONE
                 answer4.visibility = View.GONE
                 quizEnd.visibility = View.VISIBLE
-                quizEnd.setText("Puanınız : ${quizScore}")
+                quizEnd.setText("Your Score : ${quizScore}")
                 finishButton.visibility = View.VISIBLE
 
 
