@@ -3,11 +3,14 @@ package com.example.astraeaquizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 
 class QuizActivity : AppCompatActivity() {
     var englishList = ArrayList<String>()
     var turkishList = ArrayList<String>()
+    var turkishOfFourthElement = ""
+    var quizScore = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
@@ -109,6 +112,17 @@ class QuizActivity : AppCompatActivity() {
         val answer2 = findViewById<RadioButton>(R.id.radioButton2)
         val answer3 = findViewById<RadioButton>(R.id.radioButton3)
         val answer4 = findViewById<RadioButton>(R.id.radioButton4)
+        val choices = findViewById<RadioGroup>(R.id.choices)
+        val quizEnd = findViewById<TextView>(R.id.quizEnd)
+        val finishButton = findViewById<Button>(R.id.finishButton)
+
+
+
+        tvQuestion.setText("Sorularınız bu alanda gözükecektir?")
+        answer1.setText("1.Cevap")
+        answer2.setText("2.Cevap")
+        answer3.setText("3.Cevap")
+        answer4.setText("4.Cevap")
 
 
 
@@ -124,6 +138,9 @@ class QuizActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.button)
         var i = 0
+        //var quizScore = 0
+        quizEnd.visibility = View.GONE
+        finishButton.visibility =View.GONE
         button.setOnClickListener(){
 
 
@@ -131,7 +148,7 @@ class QuizActivity : AppCompatActivity() {
             // get turkish of the fourth element of shuffledEnglishList from database
             val cursor4 = db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[i]}'", null)
             val turkishIndex4 = cursor4.getColumnIndex("turkish")
-            var turkishOfFourthElement = ""
+            //var turkishOfFourthElement = ""
             while (cursor4.moveToNext()) {
                 turkishOfFourthElement = cursor4.getString(turkishIndex4)
             }
@@ -180,30 +197,55 @@ class QuizActivity : AppCompatActivity() {
             i++
 
 
+            choices.setOnCheckedChangeListener(
+                RadioGroup.OnCheckedChangeListener { _, checkedId ->
+                    val radio: RadioButton = findViewById(checkedId)
+                    if (radio.text == turkishOfFourthElement) {
+                        /*
+                         val intent = Intent(this, QuizActivity::class.java)
+                         startActivity(intent)
+                         Toast.makeText(applicationContext,"Correct Answer!:"+
+                                 " ${radio.text}",
+                             Toast.LENGTH_SHORT).show()
+
+                         */
+
+                        quizScore ++
+
+
+
+                    }
+                }
+
+            )
+
+
+            if(i==10){
+                button.visibility = View.GONE
+                tvQuestion.visibility = View.GONE
+                answer1.visibility = View.GONE
+                answer2.visibility = View.GONE
+                answer3.visibility = View.GONE
+                answer4.visibility = View.GONE
+                quizEnd.visibility = View.VISIBLE
+                quizEnd.setText("Puanınız : ${quizScore}")
+                finishButton.visibility = View.VISIBLE
+
+
+
+            }
+
+
 
         }
 
-        // val choices = findViewById<RadioGroup>(R.id.choices)
-//
-        // choices.setOnCheckedChangeListener(
-        //     RadioGroup.OnCheckedChangeListener { _, checkedId ->
-        //         val radio: RadioButton = findViewById(checkedId)
-        //         if (radio.text == correctAnswer) {
-        //             val intent = Intent(this, QuizActivity::class.java)
-        //             startActivity(intent)
-        //             Toast.makeText(applicationContext,"Correct Answer!:"+
-        //                     " ${radio.text}",
-        //                 Toast.LENGTH_SHORT).show()
-        //         } else {
-        //             val intent = Intent(this, QuizActivity::class.java)
-        //             startActivity(intent)
-        //             Toast.makeText(applicationContext,"Wrong Answer!:"+
-        //                     " ${radio.text}",
-        //                 Toast.LENGTH_SHORT).show()
-        //         }
-        //     }
-//
-        // )
+
+        finishButton.setOnClickListener(){
+            val intent = Intent(this,MainPage::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 }
