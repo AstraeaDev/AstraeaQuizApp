@@ -12,8 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 class RegisterPage : AppCompatActivity() {
 
 
-
-    private lateinit var fireBaseAuth : FirebaseAuth
+    private lateinit var fireBaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,39 +22,29 @@ class RegisterPage : AppCompatActivity() {
 
 
         val buttonClick = findViewById<Button>(R.id.register_button)
-        buttonClick.setOnClickListener{
+        buttonClick.setOnClickListener {
 
             val email = findViewById<EditText>(R.id.register_email).text.toString()
             //val email = binding.registerEmail.text.toString()
             val password = findViewById<EditText>(R.id.register_password).text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty()){
-                fireBaseAuth.createUserWithEmailAndPassword(email , password).addOnCompleteListener(){
-                    if(it.isSuccessful){
-                        val intent = Intent(this,MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                    else{
-                        Toast.makeText(this, it.exception.toString(),Toast.LENGTH_LONG).show()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                fireBaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener() {
+                        if (it.isSuccessful) {
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
+
+                        }
 
                     }
-
-                }
-            }
-            else {
-                Toast.makeText(this, "Empty Fields Are not Allowed",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Empty Fields Are not Allowed", Toast.LENGTH_LONG).show()
             }
 
         }
 
-
-        /*
-        val buttonClick = findViewById<Button>(R.id.register_button)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this, MainPage::class.java)
-            startActivity(intent)
-        }
-        ,
-         */
     }
 }

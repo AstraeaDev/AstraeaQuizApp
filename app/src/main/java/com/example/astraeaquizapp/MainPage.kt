@@ -137,7 +137,6 @@ class MainPage : AppCompatActivity() {
         map = englishList.zip(turkishList).toMap() // creates a dict
 
 
-
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, englishList)
         val myList = findViewById<ListView>(R.id.words_list)
 
@@ -155,12 +154,13 @@ class MainPage : AppCompatActivity() {
 
         val buttonClickForQuiz = findViewById<Button>(R.id.takeQuizButton)
         buttonClickForQuiz.setOnClickListener {
-            val intent = Intent(this, QuizActivity::class.java )
+            val intent = Intent(this, QuizActivity::class.java)
             intent.putExtra("dict", "$map")
             val shuffledEnglishList = englishList.shuffled() as ArrayList<String>
 
             // get turkish of the first element of shuffledEnglishList from database
-            val cursor = db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[0]}'", null)
+            val cursor =
+                db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[0]}'", null)
             val turkishIndex = cursor.getColumnIndex("turkish")
             var turkishOfFirstElement = ""
             while (cursor.moveToNext()) {
@@ -169,7 +169,8 @@ class MainPage : AppCompatActivity() {
             Log.d("turkishOfFirstElement", turkishOfFirstElement)
 
             // get turkish of the second element of shuffledEnglishList from database
-            val cursor2 = db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[1]}'", null)
+            val cursor2 =
+                db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[1]}'", null)
             val turkishIndex2 = cursor2.getColumnIndex("turkish")
             var turkishOfSecondElement = ""
             while (cursor2.moveToNext()) {
@@ -177,7 +178,8 @@ class MainPage : AppCompatActivity() {
             }
 
             // get turkish of the third element of shuffledEnglishList from database
-            val cursor3 = db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[2]}'", null)
+            val cursor3 =
+                db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[2]}'", null)
             val turkishIndex3 = cursor3.getColumnIndex("turkish")
             var turkishOfThirdElement = ""
             while (cursor3.moveToNext()) {
@@ -185,7 +187,8 @@ class MainPage : AppCompatActivity() {
             }
 
             // get turkish of the fourth element of shuffledEnglishList from database
-            val cursor4 = db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[3]}'", null)
+            val cursor4 =
+                db.rawQuery("SELECT * FROM book WHERE english = '${shuffledEnglishList[3]}'", null)
             val turkishIndex4 = cursor4.getColumnIndex("turkish")
             var turkishOfFourthElement = ""
             while (cursor4.moveToNext()) {
@@ -193,13 +196,13 @@ class MainPage : AppCompatActivity() {
             }
 
             createNotifChannel()
-            val intentNotification=Intent(this,MainPage::class.java)
+            val intentNotification = Intent(this, MainPage::class.java)
             val pendingIntent = TaskStackBuilder.create(this).run {
                 addNextIntentWithParentStack(intent)
                 getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
             }
 
-            val notif = NotificationCompat.Builder(this,CHANNEL_ID)
+            val notif = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Brave Step!")
                 .setContentText("Keep solving quizzes and get better!")
                 .setSmallIcon(R.drawable.astraea_logo)
@@ -208,7 +211,7 @@ class MainPage : AppCompatActivity() {
                 .build()
 
             val notifManger = NotificationManagerCompat.from(this)
-            notifManger.notify(NOTIF_ID,notif)
+            notifManger.notify(NOTIF_ID, notif)
 
             intent.putExtra("question", shuffledEnglishList[0])
             intent.putExtra("answer1", turkishOfFourthElement)
@@ -219,9 +222,14 @@ class MainPage : AppCompatActivity() {
         }
 
     }
+
     private fun createNotifChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT).apply {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
                 lightColor = Color.BLUE
                 enableLights(true)
             }

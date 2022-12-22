@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var fireBaseAuth : FirebaseAuth
+    private lateinit var fireBaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,26 +27,20 @@ class MainActivity : AppCompatActivity() {
             //val email = binding.registerEmail.text.toString()
             val password = findViewById<EditText>(R.id.login_password).text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty()){
-                fireBaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener(){
-                    if(it.isSuccessful){
-                        val intent = Intent(this,MainPage::class.java)
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                fireBaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener() {
+                    if (it.isSuccessful) {
+                        val intent = Intent(this, MainPage::class.java)
                         startActivity(intent)
-                    }
-                    else{
+                    } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
 
                     }
 
                 }
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Empty Fields Are not Allowed", Toast.LENGTH_LONG).show()
             }
-            /* val intent = Intent(this, MainPage::class.java)
-             startActivity(intent)
-
-             */
         }
 
 
