@@ -39,6 +39,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/registerbutton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
@@ -116,6 +117,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_mail" />
+
+        <Button
+            android:id="@+id/checkInternet"
+            android:layout_width="111dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="48dp"
+            android:text="Check Internet"
+            app:layout_constraintBottom_toBottomOf="@+id/text_mail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
